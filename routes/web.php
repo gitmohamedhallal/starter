@@ -16,3 +16,17 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+Route::domain('{account}.localhost')->group(function () {
+    Route::get('user/{id}', function ($account, $id) {
+        //
+        return $account . " with " . $id;
+    });
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
